@@ -1,0 +1,21 @@
+import { useRouter } from 'next/router';
+import React, { useContext } from 'react'
+import ProfileComp from '../component/profileComp'
+import { AuthContext } from '../context/auth';
+
+function Profile() {
+    
+    // const { user } = useContext(AuthContext);
+    // const Redirect = () => {
+    //   const router = useRouter();
+    //   router.push('/login')
+    //   return null;
+    // };
+
+  return <div>
+      <ProfileComp />
+      {/* {user?.uid ?  : <Redirect />} */}
+      </div>;
+}
+
+export default Profile

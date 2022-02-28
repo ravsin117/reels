@@ -1,0 +1,64 @@
+.login-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+    text-align: center;
+    flex-direction: row;
+
+}
+
+.login-card{
+    border:1px solid rgb(214, 211, 211);
+    width: 20rem;
+    /* height:25rem; */
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.bottom-card{
+    width:20rem;
+    margin-top:1rem;
+    padding:1rem;
+    border:1px solid #ccc;
+}
+
+.carbg{
+    background:url(../assets/carousel.jpg);
+    background-size: cover;
+    height: 590px;
+    width:441px;
+    position: relative;
+}
+
+.car{
+    position:absolute;
+    height: 423px;
+    width:241px;
+    top:93px;
+    left:143px
+
+}
+
+@media only screen and (max-width:500px){
+    .login-card{
+        width:100%;
+    }
+    .bottom-card{
+        width:100%
+    }
+   
+}
+@media only screen and (max-width:500px){
+    .login-card{
+        width:15rem;
+    }
+    .bottom-card{
+        width: 15rem;
+    }
+}
+@media only screen and (max-width:700px){
+   .carbg{
+    display: none;
+   }
+}
