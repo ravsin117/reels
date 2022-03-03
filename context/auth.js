@@ -13,17 +13,16 @@ import {
 function Authwrapper({children}) {
 
     const [user,setUser]=React.useState('');
-    const[loading,setLoading] = React.useState(false);
-    console.log(user)
+    const[loading,setLoading] = React.useState(true);
     
     useEffect(()=>{
-        onAuthStateChanged(auth,(user)=>{
-            if(user){
-                setUser(user)
-            }else{
-              setUser('');
-            }
-        })
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setUser(user);
+          } else {
+            setUser("");
+          }
+        });
         setLoading(false);
     },[])
     

@@ -17,10 +17,12 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
 import { AuthContext } from "../context/auth";
 import { useRouter } from "next/router";
+import Link from "next/link";
+
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Logout"];
 
-const Navbar = () => {
+const Navbar = ({userData}) => {
 
   const router = useRouter();
   const{logout} = React.useContext(AuthContext)
@@ -78,7 +80,11 @@ const Navbar = () => {
             <ExploreIcon fontSize="large" className="nav-icons" />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{margin:'0.5rem'}}/>
+                <Avatar
+                  alt="Remy Sharp"
+                  src={userData?.photoURL}
+                  sx={{ margin: "0.5rem" }}
+                />
               </IconButton>
             </Tooltip>
             <Menu
@@ -97,20 +103,21 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                <MenuItem  onClick={()=>handleCloseUserMenu}
-                
-                >
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                
-                <MenuItem  onClick={()=>{
+              <MenuItem onClick={() => handleCloseUserMenu}>
+                <Link href='/profile'>
+                <Typography textAlign="center">Profile</Typography>
+
+                </Link>
+              </MenuItem>
+
+              <MenuItem
+                onClick={() => {
                   handleLogOut();
-                  handleCloseUserMenu}
-                }
-                >
-                  <Typography textAlign="center">Logout</Typography>
-                </MenuItem>
-              
+                  handleCloseUserMenu;
+                }}
+              >
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

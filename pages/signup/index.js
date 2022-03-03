@@ -28,7 +28,7 @@ function Index() {
     try {
       setLoading(true);
       setError("");
-      const user =await signup(email, password);
+      const user =await signup(email, password); // unique id in user
       console.log("signed in");
 
       const storageRef = ref(storage,`${user.uid}/profile`);
@@ -57,21 +57,21 @@ function Index() {
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
             console.log("File available at", downloadURL);
-            let obj={
+              let obj={
               name:name,
               email:email,
-              uid:user.user.uid,
-              photoURL :downloadURL
-
-            }
-            //firestore
+              uid: user.user.uid,
+              photoURL :downloadURL,
+              post:[]
+              }
+            // firestore database
             await setDoc(doc(db,'users',user.user.uid),obj)
             console.log('doc added')
           });
         }
       );
     } catch (error) {
-      setError(error);
+      setError(error.message)
       setTimeout(() => {
         setError("");
       }, 2000); // after 2 sec remove error
